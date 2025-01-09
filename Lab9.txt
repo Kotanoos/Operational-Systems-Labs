@@ -1,0 +1,99 @@
+1.
+kotanos@Bubuntu:~$ sudo apt-add-repository deb http://nginx.org/packages/ubuntu/ precise nginx
+Repository: 'deb http://nginx.org/packages/ubuntu/ precise nginx'
+Description:
+Archive for codename: precise components: nginx
+More info: http://nginx.org/packages/ubuntu/
+Adding repository.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Adding deb entry to /etc/apt/sources.list.d/archive_uri-http_nginx_org_packages_ubuntu_-jammy.list
+Adding disabled deb-src entry to /etc/apt/sources.list.d/archive_uri-http_nginx_org_packages_ubuntu_-jammy.list
+Hit:1 http://ru.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease                
+Hit:3 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease                    
+Hit:4 http://security.ubuntu.com/ubuntu noble-security InRelease                       
+Get:5 http://nginx.org/packages/ubuntu precise InRelease [2 835 B]
+Err:5 http://nginx.org/packages/ubuntu precise InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY ABF5BD827BD9BF62
+Reading package lists... Done
+W: GPG error: http://nginx.org/packages/ubuntu precise InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY ABF5BD827BD9BF62
+E: The repository 'http://nginx.org/packages/ubuntu precise InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+kotanos@Bubuntu:~$ sudo apt update
+Hit:1 http://ru.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease            
+Hit:3 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease          
+Get:4 http://nginx.org/packages/ubuntu precise InRelease [2 835 B]  
+Hit:5 http://security.ubuntu.com/ubuntu noble-security InRelease
+Err:4 http://nginx.org/packages/ubuntu precise InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY ABF5BD827BD9BF62
+Reading package lists... Done
+W: GPG error: http://nginx.org/packages/ubuntu precise InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY ABF5BD827BD9BF62
+E: The repository 'http://nginx.org/packages/ubuntu precise InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+kotanos@Bubuntu:~$ apt download zip nginx
+Get:1 http://ru.archive.ubuntu.com/ubuntu noble-updates/main amd64 nginx amd64 1.24.0-2ubuntu7.1 [521 kB]
+Get:2 http://ru.archive.ubuntu.com/ubuntu noble-updates/main amd64 zip amd64 3.0-13ubuntu0.1 [176 kB]
+Fetched 697 kB in 1s (1 268 kB/s)
+kotanos@Bubuntu:~$ sudo dpkg -i nginx_1.24.0-2ubuntu7.1_amd64.deb
+Selecting previously unselected package nginx.
+(Reading database ... 214788 files and directories currently installed.)
+Preparing to unpack nginx_1.24.0-2ubuntu7.1_amd64.deb ...
+Unpacking nginx (1.24.0-2ubuntu7.1) ...
+dpkg: dependency problems prevent configuration of nginx:
+ nginx depends on nginx-common (= 1.24.0-2ubuntu7.1); however:
+  Package nginx-common is not installed.
+
+dpkg: error processing package nginx (--install):
+ dependency problems - leaving unconfigured
+Processing triggers for man-db (2.10.2-1) ...
+Errors were encountered while processing:
+ nginx
+kotanos@Bubuntu:~$ sudo dpkg -r nginx
+(Reading database ... 214793 files and directories currently installed.)
+Removing nginx (1.24.0-2ubuntu7.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+2.
+kotanos@Bubuntu:~$ snap find vlc
+Name             Version                 Publisher      Notes  Summary
+vlc              3.0.20-1-g2617de71b6    videolan       -      The ultimate media player
+orion-desktop    3.0.0                   keshavnrj      -      Complete torrent client and streamer for Linux Desktop
+audio-sharing    0.2.2                   soumyadghosh   -      Share your computer audio
+gridplayer       0.5.2                   vzhd1701       -      Play multiple videos side-by-side
+ustreamer        6.18                    pgentili       -      Lightweight and fast MJPEG-HTTP streamer
+mjpg-streamer    2.0                     ogra           -      UVC webcam streaming tool
+audio-recorder   3.0.5+rev1432+pkg-7b07  brlin          -      A free audio-recorder for Linux (EXTREMELY BUGGY)
+kycli            0+git.9591d6e           dvlc           -      The command line interface to the unofficialKYC platform.
+peerflix         v0.39.0+git1.df28e20    pmagill        -      Streaming torrent client for Node.js
+test-streamlink  1.4.1-64-g599f362e      addq1eax       -      test-Streamlink
+kotanos@Bubuntu:~$ sudo snap install vlc
+vlc 3.0.20-1-g2617de71b6 from VideoLAN installed
+3.
+kotanos@Bubuntu:~$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+kotanos@Bubuntu:~$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+kotanos@Bubuntu:~$ sudo iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+kotanos@Bubuntu:~$ sudo iptables -A INPUT -j DROP
+kotanos@Bubuntu:~$ sudo iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+DROP       all  --  anywhere             anywhere            
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
