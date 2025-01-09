@@ -1,0 +1,90 @@
+1.
+kotanos@Bubuntu:~$ for i in {1..3}; do
+> echo "Name of user: $USER"
+> done
+Name of user: kotanos
+Name of user: kotanos
+Name of user: kotanos
+
+2.
+kotanos@Bubuntu:~$ num=0
+kotanos@Bubuntu:~$ while [ $num -le 100 ]; do
+> echo $num
+> num=$((num + 2))
+> done
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+34
+36
+38
+40
+42
+44
+46
+48
+50
+52
+54
+56
+58
+60
+62
+64
+66
+68
+70
+72
+74
+76
+78
+80
+82
+84
+86
+88
+90
+92
+94
+96
+98
+100
+
+3.
+kotanos@Bubuntu:~$ nano test.txt
+There is some useful information
+kotanos@Bubuntu:~$ nano backup.sh
+cp ~/test.txt ~/test.txt.bak
+kotanos@Bubuntu:~$ chmod +x backup.sh
+kotanos@Bubuntu:~$ crontab -e
+*/10 * * * * /bin/bash ~/backup.sh
+crontab: installing new crontab
+kotanos@Bubuntu:~$ crontab -l
+*/10 * * * * /bin/bash ~/backup.sh
+kotanos@Bubuntu:~$ ls
+backup.sh  Downloads  file6          Music     Pictures  Templates
+Desktop    file3      fileeeeeeeeee  newFile2  Public    test.txt
+Documents  file5      Linkers        newFile4  snap      Videos
+kotanos@Bubuntu:~$ ~/backup.sh
+kotanos@Bubuntu:~$ ls
+backup.sh  Downloads  file6          Music     Pictures  Templates     Videos
+Desktop    file3      fileeeeeeeeee  newFile2  Public    test.txt
+Documents  file5      Linkers        newFile4  snap      test.txt.bak
+kotanos@Bubuntu:~$ cat test.txt
+There is some useful information
+kotanos@Bubuntu:~$ cat test.txt.bak
+There is some useful information
