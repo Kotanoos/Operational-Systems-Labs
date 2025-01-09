@@ -1,0 +1,35 @@
+1.
+kotanos@Bubuntu:~$ sudo groupadd developer
+[sudo] password for kotanos: 
+kotanos@Bubuntu:~$ sudo useradd -m -G developer user1
+kotanos@Bubuntu:~$ sudo useradd -m -G developer user2
+kotanos@Bubuntu:~$ sudo useradd -m -G developer user3
+kotanos@Bubuntu:~$ sudo passwd user1
+New password: 
+Retype new password: 
+passwd: password updated successfully
+kotanos@Bubuntu:~$ sudo passwd user2
+New password: 
+Retype new password: 
+passwd: password updated successfully
+kotanos@Bubuntu:~$ sudo passwd user3
+New password: 
+Retype new password: 
+passwd: password updated successfully
+kotanos@Bubuntu:~$ sudo mkdir /shared
+kotanos@Bubuntu:~$ sudo chown :developer /shared
+kotanos@Bubuntu:~$ sudo chmod 2775 /shared
+2.
+kotanos@Bubuntu:~$ sudo mkdir /shared/exchange
+kotanos@Bubuntu:~$ sudo chown :developer /shared/exchange
+kotanos@Bubuntu:~$ sudo chmod 3770 /shared/exchange
+3.
+kotanos@Bubuntu:~$ sudo mkdir /secure
+kotanos@Bubuntu:~$ sudo touch /secure/file1 /secure/file2 /secure/file3
+kotanos@Bubuntu:~$ sudo chown root:root /secure
+kotanos@Bubuntu:~$ sudo chmod 700 /secure
+kotanos@Bubuntu:~$ sudo chmod 600 /secure/file1 /secure/file2 /secure/file3
+kotanos@Bubuntu:~$ cd /secure
+bash: cd: /secure: Permission denied
+kotanos@Bubuntu:~$ ls /secure
+ls: cannot open directory '/secure': Permission denied
