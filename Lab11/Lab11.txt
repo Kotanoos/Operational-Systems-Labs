@@ -1,0 +1,49 @@
+kotanos@ubuntuu:~$ cd Drive
+kotanos@ubuntuu:~/Drive$ ls
+Makefile  simple_char.c
+kotanos@ubuntuu:~/Drive$ nano Makefile
+kotanos@ubuntuu:~/Drive$ nano simple_char.c
+kotanos@ubuntuu:~/Drive$ make
+make -C /lib/modules/6.8.0-41-generic/build M=/home/kotanos/Drive modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-41-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-13 (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+  You are using:           gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+  CC [M]  /home/kotanos/Drive/simple_char.o
+  MODPOST /home/kotanos/Drive/Module.symvers
+  CC [M]  /home/kotanos/Drive/simple_char.mod.o
+  LD [M]  /home/kotanos/Drive/simple_char.ko
+  BTF [M] /home/kotanos/Drive/simple_char.ko
+Skipping BTF generation for /home/kotanos/Drive/simple_char.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-41-generic'
+kotanos@ubuntuu:~/Drive$ ls
+Makefile        simple_char.c    simple_char.mod.c
+modules.order   simple_char.ko   simple_char.mod.o
+Module.symvers  simple_char.mod  simple_char.o
+kotanos@ubuntuu:~/Drive$ sudo insmod simple_char.ko
+[sudo] password for kotanos: 
+kotanos@ubuntuu:~/Drive$ sudo dmesg | tail
+[   44.464208] audit: type=1400 audit(1734819614.930:156): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firmware-updater.hook.configure" pid=2047 comm="apparmor_parser"
+[   45.330821] audit: type=1400 audit(1734819615.797:157): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firmware-updater.firmware-updater-app" pid=2046 comm="apparmor_parser"
+[   53.481491] systemd-journald[286]: /var/log/journal/bbe7f41fa6f34a88bc59be66bcbe9c46/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+[   53.794491] rfkill: input handler enabled
+[   59.553227] rfkill: input handler disabled
+[   60.862418] ISO 9660 Extensions: Microsoft Joliet Level 3
+[   60.863295] ISO 9660 Extensions: RRIP_1991A
+[   61.033497] audit: type=1400 audit(1734819631.494:158): apparmor="DENIED" operation="capable" class="cap" profile="/snap/snapd/23258/usr/lib/snapd/snap-confine" pid=2853 comm="snap-confine" capability=12  capname="net_admin"
+[   61.033535] audit: type=1400 audit(1734819631.494:159): apparmor="DENIED" operation="capable" class="cap" profile="/snap/snapd/23258/usr/lib/snapd/snap-confine" pid=2853 comm="snap-confine" capability=38  capname="perfmon"
+[  128.704898] simple_char: driver registered with major 240
+kotanos@ubuntuu:~/Drive$ su
+Password: 
+root@ubuntuu:/home/kotanos/Drive# mknod /dev/simple_char c 240 0
+root@ubuntuu:/home/kotanos/Drive# echo "Test message" > /dev/simple_char
+root@ubuntuu:/home/kotanos/Drive# cat /dev/simple_char
+Test message
+root@ubuntuu:/home/kotanos/Drive# sudo rmmod simple_char
+root@ubuntuu:/home/kotanos/Drive# make clean
+make -C /lib/modules/6.8.0-41-generic/build M=/home/kotanos/Drive clean
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-41-generic'
+  CLEAN   /home/kotanos/Drive/Module.symvers
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-41-generic'
+root@ubuntuu:/home/kotanos/Drive# ls
+Makefile  simple_char.c
