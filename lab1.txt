@@ -1,0 +1,16 @@
+cd /home/kotanos
+mkdir students
+cd /home/kotanos
+mkdir mentors
+cd /home/kotanos/students
+touch students_list.txt
+cd /home/kotanos/mentors
+touch mentors_list.txt
+mv mentors_list.txt /home/kotanos/students
+cd /home/kotanos/students
+ls
+mentors_list.txt  students_list.txt
+rmdir mentors
+mv students students_and_mentors
+rm -R students_and_mentors
+ip a s

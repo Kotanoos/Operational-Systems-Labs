@@ -1,0 +1,46 @@
+1.
+kotanos@Bubuntu:~$ echo 'Some information' > file1
+kotanos@Bubuntu:~$ cp file1 file2
+kotanos@Bubuntu:~$ ln -s file1 file3
+kotanos@Bubuntu:~$ ls -l
+lrwxrwxrwx 1 kotanos kotanos    5 ноя 20 23:50 file3 -> file1
+kotanos@Bubuntu:~$ ln file1 file4
+kotanos@Bubuntu:~$ ls -l
+-rw-rw-r-- 2 kotanos kotanos   17 ноя 20 23:49 file4
+kotanos@Bubuntu:~$ ls -li
+524963 -rw-rw-r-- 2 kotanos kotanos   17 ноя 20 23:49 file1
+525057 -rw-rw-r-- 1 kotanos kotanos   17 ноя 20 23:49 file2
+525060 lrwxrwxrwx 1 kotanos kotanos    5 ноя 20 23:50 file3 -> file1
+524963 -rw-rw-r-- 2 kotanos kotanos   17 ноя 20 23:49 file4
+kotanos@Bubuntu:~$ rm file1
+kotanos@Bubuntu:~$ cat file2
+Some information
+kotanos@Bubuntu:~$ cat file3
+cat: file3: No such file or directory
+kotanos@Bubuntu:~$ cat file4
+Some information
+
+file2 - новый файл, имеющий другой inode. При удалении исходного файла никакого влияния на этот не оказывается, поскольку он имеет другой inode
+file3 - при удалении исходного файла ссылка становится недействительной, поскольку файл хранит только путь к исходному файлу
+file4 - при удалении исходного файла ссылка не перестает работать, поскольку исходный и этот файлы обращаются на один inode, из-за чего при удалении исходного file4 станет единственным действительным
+
+2.
+kotanos@Bubuntu:~$ mv file2 newFile2
+kotanos@Bubuntu:~$ mv file4 newFile4
+kotanos@Bubuntu:~$ ln -s newFile2 LinkTonewFile2
+kotanos@Bubuntu:~$ mkdir Linkers
+kotanos@Bubuntu:~$ ln -s newFile4 LinkTonewFile4
+kotanos@Bubuntu:~$ mv LinkTonewFile2 Linkers/
+kotanos@Bubuntu:~$ mv LinkTonewFile4 Linkers/
+kotanos@Bubuntu:~$ cd Linkers
+kotanos@Bubuntu:~/Linkers$ ls
+LinkTonewFile2  LinkTonewFile4
+
+3.
+kotanos@Bubuntu:~$ echo "some information again" > file5
+kotanos@Bubuntu:~$ echo "another information again" > file6
+kotanos@Bubuntu:~$ chmod 664 file5
+kotanos@Bubuntu:~$ chmod u=rw,g-wrx,o-wrx file6
+kotanos@Bubuntu:~$ ls -l
+-rw-rw-r-- 1 kotanos kotanos   23 ноя 21 00:12 file5
+-rw------- 1 kotanos kotanos   26 ноя 21 00:12 file6

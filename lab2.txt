@@ -1,0 +1,337 @@
+kotanos@Bubuntu:~$ sudo useradd newuser
+[sudo] password for kotanos: 
+kotanos@Bubuntu:~$ sudo passwd newuser
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: password updated successfully
+kotanos@Bubuntu:~$ whoami
+kotanos
+kotanos@Bubuntu:~$ su newuser
+Password: 
+$ whoami
+newuser
+$ exit
+kotanos@Bubuntu:~$ whoami
+kotanos
+kotanos@Bubuntu:~$ more /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologi
+n
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/n
+ologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:102:105::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:103:106:systemd Time Synchronization,,,:/run/systemd:/usr/sbi
+n/nologin
+syslog:x:104:111::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:113:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:116::/run/uuidd:/usr/sbin/nologin
+systemd-oom:x:108:117:systemd Userspace OOM Killer,,,:/run/systemd:/usr/sbin/nol
+ogin
+tcpdump:x:109:118::/nonexistent:/usr/sbin/nologin
+avahi-autoipd:x:110:119:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/usr/sbin/
+nologin
+usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+dnsmasq:x:112:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+kernoops:x:113:65534:Kernel Oops Tracking Daemon,,,:/:/usr/sbin/nologin
+avahi:x:114:121:Avahi mDNS daemon,,,:/run/avahi-daemon:/usr/sbin/nologin
+cups-pk-helper:x:115:122:user for cups-pk-helper service,,,:/home/cups-pk-helper
+:/usr/sbin/nologin
+rtkit:x:116:123:RealtimeKit,,,:/proc:/usr/sbin/nologin
+whoopsie:x:117:124::/nonexistent:/bin/false
+sssd:x:118:125:SSSD system user,,,:/var/lib/sss:/usr/sbin/nologin
+speech-dispatcher:x:119:29:Speech Dispatcher,,,:/run/speech-dispatcher:/bin/fals
+e
+fwupd-refresh:x:120:126:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+nm-openvpn:x:121:127:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin
+/nologin
+saned:x:122:129::/var/lib/saned:/usr/sbin/nologin
+colord:x:123:130:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/no
+login
+geoclue:x:124:131::/var/lib/geoclue:/usr/sbin/nologin
+pulse:x:125:132:PulseAudio daemon,,,:/run/pulse:/usr/sbin/nologin
+gnome-initial-setup:x:126:65534::/run/gnome-initial-setup/:/bin/false
+hplip:x:127:7:HPLIP system user,,,:/run/hplip:/bin/false
+gdm:x:128:134:Gnome Display Manager:/var/lib/gdm3:/bin/false
+kotanos:x:1000:1000:kotanos,,,:/home/kotanos:/bin/bash
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+sshd:x:129:65534::/run/sshd:/usr/sbin/nologin
+userrrrrr:x:1001:1001::/home/userrrrrr:/bin/sh
+newuser:x:1002:1002::/home/newuser:/bin/sh
+kotanos@Bubuntu:~$ more /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:
+fax:x:21:
+voice:x:22:
+cdrom:x:24:
+floppy:x:25:
+tape:x:26:
+sudo:x:27:
+audio:x:29:pulse
+dip:x:30:
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:
+sasl:x:45:
+plugdev:x:46:
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+crontab:x:104:
+messagebus:x:105:
+systemd-timesync:x:106:
+input:x:107:
+sgx:x:108:
+kvm:x:109:
+render:x:110:
+syslog:x:111:
+_ssh:x:112:
+tss:x:113:
+bluetooth:x:114:
+ssl-cert:x:115:
+uuidd:x:116:
+systemd-oom:x:117:
+tcpdump:x:118:
+avahi-autoipd:x:119:
+netdev:x:120:
+avahi:x:121:
+lpadmin:x:122:
+rtkit:x:123:
+whoopsie:x:124:
+sssd:x:125:
+fwupd-refresh:x:126:
+nm-openvpn:x:127:
+scanner:x:128:saned
+saned:x:129:
+colord:x:130:
+geoclue:x:131:
+pulse:x:132:
+pulse-access:x:133:
+gdm:x:134:
+lxd:x:135:
+kotanos:x:1000:
+sambashare:x:136:
+vboxsf:x:999:kotanos
+vboxdrmipc:x:998:
+userrrrrr:x:1001:
+newuser:x:1002:
+kotanos@Bubuntu:~$ sudo more /etc/shadow
+root:$y$j9T$c42WY9X6g2lpZEqlhr/Uo0$bfrAZ5ghSrK3I2TMTQpy6BtaBK7gJ2Yts6of6CV3DK7:1
+9990:0:99999:7:::
+daemon:*:19977:0:99999:7:::
+bin:*:19977:0:99999:7:::
+sys:*:19977:0:99999:7:::
+sync:*:19977:0:99999:7:::
+games:*:19977:0:99999:7:::
+man:*:19977:0:99999:7:::
+lp:*:19977:0:99999:7:::
+mail:*:19977:0:99999:7:::
+news:*:19977:0:99999:7:::
+uucp:*:19977:0:99999:7:::
+proxy:*:19977:0:99999:7:::
+www-data:*:19977:0:99999:7:::
+backup:*:19977:0:99999:7:::
+list:*:19977:0:99999:7:::
+irc:*:19977:0:99999:7:::
+gnats:*:19977:0:99999:7:::
+nobody:*:19977:0:99999:7:::
+systemd-network:*:19977:0:99999:7:::
+systemd-resolve:*:19977:0:99999:7:::
+messagebus:*:19977:0:99999:7:::
+systemd-timesync:*:19977:0:99999:7:::
+syslog:*:19977:0:99999:7:::
+_apt:*:19977:0:99999:7:::
+tss:*:19977:0:99999:7:::
+uuidd:*:19977:0:99999:7:::
+systemd-oom:*:19977:0:99999:7:::
+tcpdump:*:19977:0:99999:7:::
+avahi-autoipd:*:19977:0:99999:7:::
+usbmux:*:19977:0:99999:7:::
+dnsmasq:*:19977:0:99999:7:::
+kernoops:*:19977:0:99999:7:::
+avahi:*:19977:0:99999:7:::
+cups-pk-helper:*:19977:0:99999:7:::
+rtkit:*:19977:0:99999:7:::
+whoopsie:*:19977:0:99999:7:::
+sssd:*:19977:0:99999:7:::
+speech-dispatcher:!:19977:0:99999:7:::
+fwupd-refresh:*:19977:0:99999:7:::
+nm-openvpn:*:19977:0:99999:7:::
+saned:*:19977:0:99999:7:::
+colord:*:19977:0:99999:7:::
+geoclue:*:19977:0:99999:7:::
+pulse:*:19977:0:99999:7:::
+gnome-initial-setup:*:19977:0:99999:7:::
+hplip:*:19977:0:99999:7:::
+gdm:*:19977:0:99999:7:::
+kotanos:$y$j9T$/fgfDrJfbwCWwEA63cCfx1$hKHxf6yRXS0E9fC/dhXN1E6dpIVBebN6xlqd/S.6eY
+0:19990:0:99999:7:::
+vboxadd:!:19991::::::
+sshd:*:19991:0:99999:7:::
+userrrrrr:$y$j9T$4nb2ch1IfvTYiS3BbLbHB.$p8iR3xzVV3lBhYwJBk3mKC909r07AfNcXxe6q/JY
+Qf9:20005:0:99999:7:::
+newuser:$y$j9T$5M5RcencM.ffFl3IAbXWl/$rshNTJd/MoBORpRK8YPBCYWZ18HMlGBV11s2uwzanI
+2:20005:0:99999:7:::
+kotanos@Bubuntu:~$ sudo userdel newuser
+kotanos@Bubuntu:~$ more /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologi
+n
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/n
+ologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:102:105::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:103:106:systemd Time Synchronization,,,:/run/systemd:/usr/sbi
+n/nologin
+syslog:x:104:111::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:113:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:116::/run/uuidd:/usr/sbin/nologin
+systemd-oom:x:108:117:systemd Userspace OOM Killer,,,:/run/systemd:/usr/sbin/nol
+ogin
+tcpdump:x:109:118::/nonexistent:/usr/sbin/nologin
+avahi-autoipd:x:110:119:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/usr/sbin/
+nologin
+usbmux:x:111:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+dnsmasq:x:112:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+kernoops:x:113:65534:Kernel Oops Tracking Daemon,,,:/:/usr/sbin/nologin
+avahi:x:114:121:Avahi mDNS daemon,,,:/run/avahi-daemon:/usr/sbin/nologin
+cups-pk-helper:x:115:122:user for cups-pk-helper service,,,:/home/cups-pk-helper
+:/usr/sbin/nologin
+rtkit:x:116:123:RealtimeKit,,,:/proc:/usr/sbin/nologin
+whoopsie:x:117:124::/nonexistent:/bin/false
+sssd:x:118:125:SSSD system user,,,:/var/lib/sss:/usr/sbin/nologin
+speech-dispatcher:x:119:29:Speech Dispatcher,,,:/run/speech-dispatcher:/bin/fals
+e
+fwupd-refresh:x:120:126:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+nm-openvpn:x:121:127:NetworkManager OpenVPN,,,:/var/lib/openvpn/chroot:/usr/sbin
+/nologin
+saned:x:122:129::/var/lib/saned:/usr/sbin/nologin
+colord:x:123:130:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/no
+login
+geoclue:x:124:131::/var/lib/geoclue:/usr/sbin/nologin
+pulse:x:125:132:PulseAudio daemon,,,:/run/pulse:/usr/sbin/nologin
+gnome-initial-setup:x:126:65534::/run/gnome-initial-setup/:/bin/false
+hplip:x:127:7:HPLIP system user,,,:/run/hplip:/bin/false
+gdm:x:128:134:Gnome Display Manager:/var/lib/gdm3:/bin/false
+kotanos:x:1000:1000:kotanos,,,:/home/kotanos:/bin/bash
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+sshd:x:129:65534::/run/sshd:/usr/sbin/nologin
+userrrrrr:x:1001:1001::/home/userrrrrr:/bin/sh
+kotanos@Bubuntu:~$ sudo groupadd newgroup
+[sudo] password for kotanos: 
+kotanos@Bubuntu:~$ tail /etc/group
+pulse:x:132:
+pulse-access:x:133:
+gdm:x:134:
+lxd:x:135:
+kotanos:x:1000:
+sambashare:x:136:
+vboxsf:x:999:kotanos
+vboxdrmipc:x:998:
+userrrrrr:x:1001:
+newgroup:x:1002:
+
+kotanos@Bubuntu:~$ groups kotanos
+kotanos : kotanos sudo vboxsf
+kotanos@Bubuntu:~$ su userrrrrr
+Password: 
+$ whoami
+userrrrrr
+$ sudo apt update
+[sudo] password for userrrrrr: 
+userrrrrr is not in the sudoers file.  This incident will be reported.
+$ exit
+kotanos@Bubuntu:~$ sudo usermod -aG sudo userrrrrr
+kotanos@Bubuntu:~$ groups userrrrrr
+userrrrrr : userrrrrr sudo
+kotanos@Bubuntu:~$ su userrrrrr
+Password: 
+$ sudo apt update
+Hit:1 http://ru.archive.ubuntu.com/ubuntu noble InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:3 http://ru.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu noble-security InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+1359 packages can be upgraded. Run 'apt list --upgradable' to see them.
+kotanos@Bubuntu:~$ sudo groupadd newgroup
+[sudo] password for kotanos: 
+kotanos@Bubuntu:~$ tail /etc/group
+pulse:x:132:
+pulse-access:x:133:
+gdm:x:134:
+lxd:x:135:
+kotanos:x:1000:
+sambashare:x:136:
+vboxsf:x:999:kotanos
+vboxdrmipc:x:998:
+userrrrrr:x:1001:
+newgroup:x:1002:
+kotanos@Bubuntu:~$ groups kotanos
+kotanos : kotanos sudo vboxsf newgroup
+kotanos@Bubuntu:~$ sudo deluser userrrrrr sudo
+[sudo] password for kotanos: 
+Removing user `userrrrrr' from group `sudo' ...
+Done.
+kotanos@Bubuntu:~$ groups userrrrrr
+userrrrrr : userrrrrr newgroup

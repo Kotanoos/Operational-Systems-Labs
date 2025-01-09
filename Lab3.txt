@@ -1,0 +1,42 @@
+1.
+kotanos@Bubuntu:~$ cd /etc
+kotanos@Bubuntu:~/etc$ echo some information > fileee
+kotanos@Bubuntu:~/etc$ echo another information > fileee2
+kotanos@Bubuntu:~/etc$ echo some diffetrent infromation > fileee3
+kotanos@Bubuntu:~/etc$ cat /* 2>errors.txt
+
+2.
+kotanos@Bubuntu:/etc$ ls -l | cut -c 1-10 | sort | uniq
+drwx------
+drwxr-s---
+drwxr-xr-x
+lrwxrwxrwx
+-r--r-----
+-r--r--r--
+-rw-r-----
+-rw-r--r--
+-rw-rw-r--
+-rwxr-xr-x
+total 1192
+
+3.
+kotanos@Bubuntu:~$ sudo nano /etc/ssh/sshd_config
+PasswordAuthentication no
+kotanos@Bubuntu:~$ sudo service sshd restart
+kotanos@Bubuntu:~$ sudo nano /etc/ssh/sshd_config
+PasswordAuthentication yes
+kotanos@Bubuntu:~$ sudo service sshd reload
+cat > fileeeeeee
+some text
+and another text
+end
+^d
+ 
+При команде restart старый процесс убивается и создается новый такой же, и также у процесса становится другой, новый PID
+В то время как при команде reload у процесса PID не меняется и остается прежним
+Команда ctrl+d передает файлу команду eof (end of file)
+4.
+kotanos@Bubuntu:~$ mc
+kotanos@Bubuntu:~$ ps aux | grep mc
+kotanos@Bubuntu:~$ kill -s 9 2511
+Killed
